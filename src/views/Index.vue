@@ -57,12 +57,7 @@ export default {
   validations: {
     username: {
       correctCharacters(username) {
-        return (
-          username.match(/^[0-9a-z\-]+$/) &&
-          (username.match(/-/g) || []).length <= 1 &&
-          username.charAt(0) != "-" &&
-          username.charAt(username.length - 1) != "-"
-        );
+        return (/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(username));
       },
       maxLength: maxLength(39)
     }
